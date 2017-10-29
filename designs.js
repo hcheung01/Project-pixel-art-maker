@@ -1,11 +1,9 @@
-// Select color input
-// Select size input
 
-// When size is submitted by the user, call makeGrid()
-
+// declare variables
 var input_rows;
 var input_cols;
 var input_color = "#000000";
+
 
 function makeGrid() {
   var table = document.getElementById("pixel_canvas");
@@ -14,11 +12,14 @@ function makeGrid() {
     table.deleteRow(0);
   input_rows = document.getElementById("input_height").value;
   input_cols = document.getElementById("input_width").value;
+
+  // loop to create input_height and input_width
   for (var i = 0; i < input_rows; i++) {
     var row_elem = table.insertRow(i);
     row_elem.setAttribute("class", "row");
     for (var j = 0; j < input_cols; j++) {
       var cell= row_elem.insertCell(j);
+    //   selecting color for grid boxes
       cell.addEventListener('click', function(evt) {
         evt.target.style.backgroundColor = document.getElementById("colorPicker").value;
         this.style.borderColor="#9ecaed";
@@ -28,7 +29,7 @@ function makeGrid() {
   }
   return false;
 }
-
+// submit button after input height and width plus color
 document.getElementById("sizePicker").addEventListener("submit", function(evt) {
   evt.preventDefault();
   makeGrid();
